@@ -47,9 +47,14 @@ def after_request_func(response):
     return response
 
 
-@app.route('/')
+@app.route("/")
 def index():
-    return {'hello': 'world'}
+    return jsonify({'status': 200, 'message': 'Hello Flask!'}), 200
+
+
+@app.errorhandler(404)
+def error_404(e):
+    return jsonify({'status': 404, 'error': 'Not Found: {0}'.format(e)}), 404
 
 
 @app.route('/images/<public_id>', methods=['PUT'])
