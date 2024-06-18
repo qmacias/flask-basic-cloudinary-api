@@ -68,6 +68,9 @@ instance/
 # Scrapy stuff:
 .scrapy
 
+# Vercel stuff
+.vercel
+
 # Sphinx documentation
 docs/_build/
 

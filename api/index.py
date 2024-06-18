@@ -15,7 +15,7 @@ cloudinary.config(
 
 '''
     Si no funciona, probar con:
-    
+
     cloudinary.config(
         cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME'),
         api_key=os.environ.get('CLOUDINARY_API_KEY'),
@@ -50,11 +50,6 @@ def after_request_func(response):
 @app.route("/")
 def index():
     return jsonify({'status': 200, 'message': 'Hello Flask!'}), 200
-
-
-@app.errorhandler(404)
-def error_404(e):
-    return jsonify({'status': 404, 'error': 'Not Found: {0}'.format(e)}), 404
 
 
 @app.route('/images/<public_id>', methods=['PUT'])
@@ -94,7 +89,3 @@ def delete_image(public_id):
         return jsonify({'message': 'image deleted', 'data': response}), 200
     except Exception as error:
         return jsonify({'error': str(error)}), 500
-
-
-if __name__ == '__main__':
-    app.run(load_dotenv=True)
